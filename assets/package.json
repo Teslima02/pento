@@ -1,0 +1,40 @@
+{
+    "repository": {},
+    "license": "MIT",
+    "scripts": {
+      "deploy": "webpack --mode production",
+      "watch": "webpack --watch",
+      "build": "webpack --mode=production --node-env=production",
+      "build:dev": "webpack --mode=development",
+      "build:prod": "webpack --mode=production --node-env=production",
+      "serve": "webpack serve"
+    },
+    "dependencies": {
+      "phoenix": "file:../deps/phoenix",
+      "phoenix_html": "file:../deps/phoenix_html",
+      "phoenix_live_view": "file:../deps/phoenix_live_view"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.16.0",
+      "@babel/preset-env": "^7.16.4",
+      "@webpack-cli/generators": "^2.4.1",
+      "babel-core": "^6.26.3",
+      "babel-loader": "^8.2.3",
+      "babel-preset-env": "^1.7.0",
+      "copy-webpack-plugin": "^10.0.0",
+      "css-loader": "^6.5.1",
+      "html-webpack-plugin": "^5.5.0",
+      "mini-css-extract-plugin": "^2.4.5",
+      "optimize-css-assets-webpack-plugin": "^6.0.1",
+      "prettier": "^2.5.0",
+      "uglifyjs-webpack-plugin": "^2.2.0",
+      "webpack": "^5.64.4",
+      "webpack-cli": "^4.9.1",
+      "webpack-dev-server": "^4.6.0",
+      "workbox-webpack-plugin": "^6.4.1"
+    },
+    "version": "1.0.0",
+    "description": "My webpack project",
+    "name": "my-webpack-project"
+  }
+  
