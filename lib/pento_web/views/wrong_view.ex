@@ -1,8 +1,16 @@
 defmodule PentoWeb.WrongView do
   use PentoWeb, :live_view
 
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, score: 0, message: "Guess a number")}
+  def mount(_params, session, socket) do
+    IO.inspect(session)
+
+    {:ok,
+     assign(socket,
+       score: 0,
+       message: "Guess a number",
+       user: Pento.Accounts.get_user_by_session_token(session["user_token"]),
+       session_id: session["live_socket_id"]
+     )}
   end
 
   def render(assigns) do
@@ -10,19 +18,27 @@ defmodule PentoWeb.WrongView do
     <h1>Your score: <%= @score %></h1>
     <h2>
       <%= @message %>
+      It's <%= time() %>
     </h2>
     <h2>
       <%= for n <- 1..10 do %>
         <a href="#" phx-click="guess" phx-value-number="<%= n %>"><%= n %></a>
       <% end %>
     </h2>
+    <pre>
+      <%= @user.email %>
+      <%= @session_id %>
+    </pre>
     """
   end
 
-  def handle_event("guess", %{"number" => guess} = data, socket) do
-    IO.inspect(data)
+  def time() do
+    DateTime.utc_now() |> to_string
+  end
+
+  def handle_event("guess", %{"number" => guess} = _data, socket) do
     message = "Your guess: #{guess}. Wrong. Guess again. "
-    score = socket.assign.score - 1
+    score = socket.assigns.score - 1
 
     {
       :noreply,
