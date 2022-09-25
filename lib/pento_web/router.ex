@@ -17,10 +17,11 @@ defmodule PentoWeb.Router do
     plug :accepts, ["json"]
   end
 
+  # live_session :default, on_mount: PentoWeb.UserAuthLive do
   scope "/", PentoWeb do
     pipe_through [:browser, :require_authenticated_user]
 
-    # get "/", PageController, :index
+    get "/", PageController, :index
     live "/guess", WrongView
   end
 
