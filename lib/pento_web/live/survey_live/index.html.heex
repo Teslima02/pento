@@ -1,6 +1,15 @@
 <section class="row">
-    <%= live_component @socket,
-    PentoWeb.DemographicLive.FormComponent,
-    user: @current_user,
-    content: "Hello to the Demographic Form Component" %>
+    <%= if @demographic do %>
+        <.live_component
+        module={PentoWeb.DemographicLive.ShowComponent}
+        demographic={@demographic}
+        id={"demographic-show-compoenent-#{@current_user.id}"} />
+
+        <.live_component
+            module={PentoWeb.RatingLive.IndexComponent}
+            products={@products}
+            current_user={@current_user}
+            id={"rating-index-compoenent-#{@current_user.id}"} 
+         />
+        <% end %>
 </section>
