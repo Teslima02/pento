@@ -34,6 +34,8 @@ defmodule PentoWeb.Router do
     live "/products/:id/show/edit", ProductLive.Show, :edit
 
     live "/survey", SurveyLive.Index, :index
+
+    live "/admin-dashboard", AdminDashboardLive.Index, :index
   end
 
   # Other scopes may use custom stacks.

@@ -49,6 +49,7 @@ defmodule Pento.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
+      {:contex, "~> 0.4.0"},
       # {:phx_gen_auth, "~> 0.4", only: [:dev], runtime: false},
     ]
   end
